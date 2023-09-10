@@ -111,7 +111,8 @@ class AutonomousProgram:
 
         # Creative Content Generation
         output_format = random.choice(['headline', 'summary', 'story'])
-        generated_output = self.user_interface.present_output(scraped_content, output_format)
+        generated_output = self.user_interface.present_output(
+            scraped_content, output_format)
 
         return generated_output, sentiment_score
 
