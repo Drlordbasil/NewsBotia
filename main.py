@@ -1,11 +1,14 @@
-import string
-import random
-import nltk
-from nltk.sentiment import SentimentIntensityAnalyzer
-import re
-from bs4 import BeautifulSoup
 import requests
+from bs4 import BeautifulSoup
+import re
+from nltk.sentiment import SentimentIntensityAnalyzer
+import nltk
+import random
+import string
 Optimized Python script:
+
+    # Downloading nltk vader lexicon
+nltk.download('vader_lexicon')
 
 
 class WebScraper:
@@ -32,7 +35,6 @@ class WebScraper:
 
 class DataAnalyzer:
     def __init__(self):
-        nltk.download('vader_lexicon')
         self.sentiment_analyzer = SentimentIntensityAnalyzer()
 
     def analyze_sentiment(self, text):
