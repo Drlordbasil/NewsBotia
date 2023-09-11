@@ -1,10 +1,11 @@
-import requests
-from bs4 import BeautifulSoup
-import re
+import string
+import random
 import nltk
 from nltk.sentiment import SentimentIntensityAnalyzer
-import random
-import string
+import re
+from bs4 import BeautifulSoup
+import requests
+Optimized Python script:
 
 
 class WebScraper:
@@ -18,11 +19,8 @@ class WebScraper:
 
     def scrape_urls(self, html):
         soup = BeautifulSoup(html, 'html.parser')
-        urls = []
-        for link in soup.find_all('a'):
-            url = link.get('href')
-            if url is not None and url.startswith('http'):
-                urls.append(url)
+        urls = [link.get('href') for link in soup.find_all('a') if link.get(
+            'href') is not None and link.get('href').startswith('http')]
         return urls
 
     def scrape_content(self, html):
@@ -38,8 +36,9 @@ class DataAnalyzer:
         self.sentiment_analyzer = SentimentIntensityAnalyzer()
 
     def analyze_sentiment(self, text):
-        sentiment_score = self.sentiment_analyzer.polarity_scores(text)
-        return sentiment_score['compound']
+        sentiment_score = self.sentiment_analyzer.polarity_scores(text)[
+            'compound']
+        return sentiment_score
 
 
 class ContentGenerator:
@@ -73,14 +72,13 @@ class UserInterface:
 
     def present_output(self, content, output_format):
         if output_format == 'headline':
-            output = self.content_generator.generate_headline(content)
+            return self.content_generator.generate_headline(content)
         elif output_format == 'summary':
-            output = self.content_generator.generate_summary(content)
+            return self.content_generator.generate_summary(content)
         elif output_format == 'story':
-            output = self.content_generator.generate_story(content)
+            return self.content_generator.generate_story(content)
         else:
-            output = "Invalid output format"
-        return output
+            return "Invalid output format"
 
 
 class AutonomousProgram:
